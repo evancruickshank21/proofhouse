@@ -18,19 +18,26 @@ export default async function ProductPage({
 
   if (!product) notFound();
 
+  const lotIndex = products.findIndex((item) => item.id === slug);
+  const lotNumber = `phs.${String(lotIndex + 1).padStart(3, "0")}`;
+
   return (
-    <main className="min-h-screen bg-[#0c0c0c] px-8 py-12 text-white md:px-12 md:py-16">
+    <main className="min-h-screen bg-[#0c0c0c] px-6 py-10 text-white md:px-12 md:py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10">
+        <div className="mb-10 flex items-center justify-between">
           <Link
             href="/shop"
-            className="font-brand-sans text-[10px] uppercase tracking-[0.24em] text-white/38 transition-opacity duration-200 hover:opacity-55"
+            className="font-brand-mono text-[10px] uppercase tracking-[0.24em] text-white/40 transition-opacity duration-200 hover:opacity-65"
           >
-            Back to Shop
+            ← Back to Shop
           </Link>
+
+          <p className="font-brand-mono text-[10px] uppercase tracking-[0.24em] text-white/30">
+            {lotNumber}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
           <div className="overflow-hidden bg-white/[0.02] p-3">
             <img
               src={product.image}
@@ -40,69 +47,69 @@ export default async function ProductPage({
           </div>
 
           <div className="max-w-xl">
-            <p className="font-brand-sans text-[10px] uppercase tracking-[0.22em] text-white/38">
+            <p className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
               {product.details.medium}
             </p>
 
-            <h1 className="mt-4 max-w-[16ch] font-brand-serif text-4xl leading-[0.88] tracking-[-0.05em] md:text-6xl">
+            <h1 className="mt-4 max-w-[16ch] font-brand-serif text-[2.6rem] leading-[0.9] tracking-[-0.05em] md:text-6xl">
               {product.name}
             </h1>
 
-            <p className="mt-4 font-brand-sans text-[13px] text-white/38">
+            <p className="mt-4 font-brand-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
               {product.year}
             </p>
 
-            <p className="mt-8 font-brand-sans text-[14px] leading-8 text-white/62 md:text-[15px]">
+            <p className="mt-8 font-brand-sans text-[14px] leading-8 text-white/65 md:text-[15px]">
               {product.description}
             </p>
 
-            <p className="mt-10 font-brand-sans text-[18px] uppercase tracking-[0.12em] text-white">
+            <p className="mt-10 font-brand-mono text-[16px] uppercase tracking-[0.16em] text-white">
               {product.price}
             </p>
 
             <div className="mt-10 border-t border-white/10 pt-8">
-              <dl className="grid grid-cols-1 gap-y-5">
+              <dl className="grid grid-cols-1 gap-y-5 sm:grid-cols-2 sm:gap-x-10">
                 <div>
-                  <dt className="font-brand-sans text-[10px] uppercase tracking-[0.22em] text-white/35">
+                  <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                     Artist
                   </dt>
-                  <dd className="mt-2 font-brand-sans text-[14px] text-white/82">
+                  <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
                     {product.details.artist}
                   </dd>
                 </div>
 
                 <div>
-                  <dt className="font-brand-sans text-[10px] uppercase tracking-[0.22em] text-white/35">
+                  <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                     Medium
                   </dt>
-                  <dd className="mt-2 font-brand-sans text-[14px] text-white/82">
+                  <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
                     {product.details.medium}
                   </dd>
                 </div>
 
                 <div>
-                  <dt className="font-brand-sans text-[10px] uppercase tracking-[0.22em] text-white/35">
+                  <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                     Category
                   </dt>
-                  <dd className="mt-2 font-brand-sans text-[14px] text-white/82">
+                  <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
                     {product.details.category}
                   </dd>
                 </div>
 
                 <div>
-                  <dt className="font-brand-sans text-[10px] uppercase tracking-[0.22em] text-white/35">
+                  <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                     Size
                   </dt>
-                  <dd className="mt-2 font-brand-sans text-[14px] text-white/82">
+                  <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
                     {product.details.size}
                   </dd>
                 </div>
 
-                <div>
-                  <dt className="font-brand-sans text-[10px] uppercase tracking-[0.22em] text-white/35">
+                <div className="sm:col-span-2">
+                  <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                     Condition
                   </dt>
-                  <dd className="mt-2 font-brand-sans text-[14px] text-white/82">
+                  <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
                     {product.details.condition}
                   </dd>
                 </div>
@@ -112,14 +119,14 @@ export default async function ProductPage({
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={`mailto:hello@proofhouse.ca?subject=Inquiry%20about%20${encodeURIComponent(product.name)}`}
-                className="inline-flex items-center justify-center border border-white bg-white px-5 py-3 font-brand-sans text-[10px] uppercase tracking-[0.24em] text-black transition-all duration-200 hover:opacity-85"
+                className="inline-flex items-center justify-center border border-white bg-white px-5 py-3 font-brand-mono text-[10px] uppercase tracking-[0.24em] text-black transition-all duration-200 hover:opacity-85"
               >
                 Inquire
               </Link>
 
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center border border-white/15 px-5 py-3 text-center font-brand-sans text-[10px] uppercase tracking-[0.24em] text-white transition-opacity duration-200 hover:opacity-55"
+                className="inline-flex items-center justify-center border border-white/15 px-5 py-3 text-center font-brand-mono text-[10px] uppercase tracking-[0.24em] text-white transition-opacity duration-200 hover:opacity-65"
               >
                 Continue Browsing
               </Link>
