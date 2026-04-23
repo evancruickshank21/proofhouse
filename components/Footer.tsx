@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RegistrationMark from "./RegistrationMark";
 
 export default function Footer() {
   return (
@@ -6,9 +7,12 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-brand-mono text-[10px] uppercase tracking-[0.24em] text-black/50">
-              Proofhouse Studio
-            </p>
+            <div className="flex items-center gap-3 text-black/55">
+              <RegistrationMark size={14} />
+              <p className="font-brand-mono text-[10px] uppercase tracking-[0.24em]">
+                Proofhouse Studio
+              </p>
+            </div>
             <p className="mt-2 font-brand-mono text-[10px] uppercase tracking-[0.22em] text-black/35">
               Volume 01 · MMXXVI
             </p>
