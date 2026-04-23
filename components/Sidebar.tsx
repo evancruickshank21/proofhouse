@@ -12,7 +12,7 @@ export default function Sidebar() {
             className="h-7 w-auto"
           />
         </Link>
-        <nav className="flex gap-6 font-brand-sans text-[10px] uppercase tracking-[0.24em] text-black/60">
+        <nav className="flex gap-6 font-brand-mono text-[10px] uppercase tracking-[0.24em] text-black/60">
           <Link
             href="/"
             className="transition-colors duration-200 hover:text-[#2a5ea8]"
@@ -46,7 +46,7 @@ export default function Sidebar() {
               />
             </Link>
 
-            <nav className="mt-10 flex flex-col gap-4 font-brand-sans text-[10px] uppercase tracking-[0.24em] text-black/60">
+            <nav className="mt-10 flex flex-col gap-4 font-brand-mono text-[10px] uppercase tracking-[0.24em] text-black/60">
               <Link
                 href="/"
                 className="transition-colors duration-200 hover:text-[#2a5ea8]"
