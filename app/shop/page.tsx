@@ -51,16 +51,18 @@ export default function ShopPage() {
 
               <div className="mt-5">
                 <p className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-black/40">
-                  {product.details.medium}
+                  {product.details.category ?? product.details.medium}
                 </p>
 
                 <h2 className="mt-3 max-w-[15ch] font-brand-serif text-[1.85rem] leading-[0.96] tracking-[-0.045em] text-black transition-colors duration-300 group-hover:text-[#4f6fbf] md:text-[2.05rem]">
                   {product.name}
                 </h2>
 
-                <p className="mt-3 font-brand-mono text-[11px] uppercase tracking-[0.2em] text-black/40">
-                  {product.year}
-                </p>
+                {/\d/.test(product.year) && (
+                  <p className="mt-3 font-brand-mono text-[11px] uppercase tracking-[0.2em] text-black/40">
+                    {product.year}
+                  </p>
+                )}
 
                 <p className="mt-4 max-w-[42ch] font-brand-sans text-[14px] leading-7 text-black/60">
                   {product.description}

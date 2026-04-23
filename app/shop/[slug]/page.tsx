@@ -48,16 +48,18 @@ export default async function ProductPage({
 
           <div className="max-w-xl">
             <p className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
-              {product.details.medium}
+              {product.details.category ?? product.details.medium}
             </p>
 
             <h1 className="mt-4 max-w-[16ch] font-brand-serif text-[2.6rem] leading-[0.9] tracking-[-0.05em] md:text-6xl">
               {product.name}
             </h1>
 
-            <p className="mt-4 font-brand-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
-              {product.year}
-            </p>
+            {/\d/.test(product.year) && (
+              <p className="mt-4 font-brand-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                {product.year}
+              </p>
+            )}
 
             <p className="mt-8 font-brand-sans text-[14px] leading-8 text-white/65 md:text-[15px]">
               {product.description}
@@ -96,14 +98,16 @@ export default async function ProductPage({
                   </dd>
                 </div>
 
-                <div>
-                  <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
-                    Size
-                  </dt>
-                  <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
-                    {product.details.size}
-                  </dd>
-                </div>
+                {product.details.size && product.details.size !== "TBD" && (
+                  <div>
+                    <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                      Size
+                    </dt>
+                    <dd className="mt-2 font-brand-sans text-[14px] text-white/85">
+                      {product.details.size}
+                    </dd>
+                  </div>
+                )}
 
                 <div className="sm:col-span-2">
                   <dt className="font-brand-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
@@ -118,8 +122,8 @@ export default async function ProductPage({
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link
-                href={`mailto:hello@proofhouse.ca?subject=Inquiry%20about%20${encodeURIComponent(product.name)}`}
-                className="inline-flex items-center justify-center border border-white bg-white px-5 py-3 font-brand-mono text-[10px] uppercase tracking-[0.24em] text-black transition-all duration-200 hover:opacity-85"
+                href={`mailto:hello@proofhousestudio.com?subject=Inquiry%20about%20${encodeURIComponent(product.name)}`}
+                className="inline-flex items-center justify-center border border-[#4f6fbf] bg-[#4f6fbf] px-5 py-3 font-brand-mono text-[10px] uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:border-[#3f5aa3] hover:bg-[#3f5aa3]"
               >
                 Inquire
               </Link>
