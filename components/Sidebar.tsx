@@ -25,6 +25,12 @@ export default function Sidebar() {
           >
             Shop
           </Link>
+          <Link
+            href="/about"
+            className="transition-colors duration-200 hover:text-[#2a5ea8]"
+          >
+            About
+          </Link>
         </nav>
       </header>
 
@@ -52,6 +58,12 @@ export default function Sidebar() {
                 className="transition-colors duration-200 hover:text-[#2a5ea8]"
               >
                 Shop
+              </Link>
+              <Link
+                href="/about"
+                className="transition-colors duration-200 hover:text-[#2a5ea8]"
+              >
+                About
               </Link>
             </nav>
           </div>
